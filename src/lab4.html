@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <style>
+    .noshow {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h4>Первая часть</h4>
+    <form id="form">
+      <div class="mb-3">
+        <label for="f_name" class="form-label">Имя</label>
+        <input required id="f_name" type="text" class="form-control" value="Владислав" />
+        <div id="f_name_help" class="form-text text-danger noshow">Неправильно</div>
+      </div>
+      <div class="mb-3">
+        <label for="f_lastname" class="form-label">Фамилия</label>
+        <input required id="f_lastname" type="text" class="form-control" value="Гордиенко" />
+        <div id="f_lastname_help" class="form-text text-danger noshow">
+          Неправильно
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="f_org" class="form-label">Наименовании организации</label>
+        <input value="КНУ" required id="f_org" type="text" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="f_card" class="form-label">Номер кредитной карты</label>
+        <input id="f_card" type="text" class="form-control" />
+        <div id="f_card_help" class="form-text text-danger noshow">Неправильно</div>
+        <div id="f_card_notry" class="form-text text-danger noshow">
+          Ещё одна попытка
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="f_phone" class="form-label">Номер телефона</label>
+        <input value="+380988127811" pattern="\+380[0-9]{9}" id="f_phone" type="tel" class="form-control" />
+        <div id="f_phone_help" class="form-text text-danger noshow">
+          Неправильно
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="f_email" class="form-label">Адрес электронной посты</label>
+        <input value="gmail@gmail.com" required id="f_email" type="email" class="form-control" />
+        <div id="f_email_help" class="form-text text-danger noshow">
+          Неправильно
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+      <button id="btn-reset" class="btn">Очистить</button>
+    </form>
+  </div>
+
+  <br />
+  <!-- part2 -->
+  <div class="container">
+    <h4>Вторая часть</h4>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Дана строка</th>
+          <th id="query"></th>
+        </tr>
+        <tr>
+          <th>Вывод</th>
+          <th id="answer"></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+<script>
+  //form
+  function formF()
+  {
+    /**
+     * @param {string} name
+     */
+    const checkName = (name) =>
+    {
+      if (name.includes(" "))
+      {
+        return false;
+      }
+      return true;
+    };
+
+    /**
+     * @param {string} phone
+     */
+    const checkPhone = (phone) =>
+    {
+      const reg = /\+380[0-9]{9}/gm;
+      if (phone.length !== 13)
+      {
+        return false;
+      }
+      return reg.test(phone);
+    };
+
+    const checkCard = (card) =>
+    {
+      function validateCardNumber(number)
+      {
+        const regex = new RegExp("^[0-9]{16}$");
+        if (!regex.test(number)) return false;
+
+        return luhnCheck(number);
+      }
+
+      function luhnCheck(val)
+      {
+        var sum = 0;
+        for (var i = 0; i < val.length; i++)
+        {
+          var intVal = parseInt(val.substr(i, 1));
+          if (i % 2 == 0)
+          {
+            intVal *= 2;
+            if (intVal > 9)
+            {
+              intVal = 1 + (intVal % 10);
+            }
+          }
+          sum += intVal;
+        }
+        return sum % 10 == 0;
+      }
+
+      return validateCardNumber(card);
+    };
+
+    /**
+     * @param {string} email
+     */
+    const checkEmail = (email) =>
+    {
+      return true;
+    };
+
+    const nameEl = document.getElementById("f_name");
+    const nameHelp = document.getElementById("f_name_help");
+    let name = nameEl.value;
+
+    const lastnameEl = document.getElementById("f_lastname");
+    const lastnameHelp = document.getElementById("f_lastname_help");
+    let lastname = lastnameEl.value;
+
+    const orgEl = document.getElementById("f_org");
+    let org = orgEl.value;
+
+    const cardEl = document.getElementById("f_card");
+    const cardHelp = document.getElementById("f_card_help");
+    const cardNotry = document.getElementById("f_card_notry");
+
+    let cardTry = 0;
+    let card = cardEl.value;
+
+    const phoneEl = document.getElementById("f_phone");
+    const phoneHelp = document.getElementById("f_phone_help");
+    let phone = phoneEl.value;
+
+    const emailEl = document.getElementById("f_email");
+    const emailHelp = document.getElementById("f_email_help");
+    let email = emailEl.value;
+
+    const form = document.getElementsByTagName("form")[0];
+    const btnReset = document.getElementById("btn-reset");
+    btnReset.addEventListener("click", (e) =>
+    {
+      e.preventDefault();
+      console.log("click!");
+      nameEl.value = "";
+      nameHelp.classList.add("noshow");
+      lastnameEl.value = "";
+      lastnameHelp.classList.add("noshow");
+      orgEl.value = "";
+      phoneEl.value = "";
+      phoneHelp.classList.add("noshow");
+      emailEl.value = "";
+      emailHelp.classList.add("noshow");
+
+      cardEl.value = "";
+      cardHelp.classList.add("noshow");
+    });
+
+    form.addEventListener("submit", (e) =>
+    {
+      e.preventDefault();
+      name = nameEl.value;
+      lastname = lastnameEl.value;
+      card = cardEl.value;
+      phone = phoneEl.value;
+
+      checkName(name)
+        ? nameHelp.classList.add("noshow")
+        : nameHelp.classList.remove("noshow");
+
+      checkName(lastname)
+        ? lastnameHelp.classList.add("noshow")
+        : lastnameHelp.classList.remove("noshow");
+
+      if (cardTry < 3)
+      {
+        if (!checkCard(card))
+        {
+          cardHelp.classList.remove("noshow");
+        } else
+        {
+          cardHelp.classList.add("noshow");
+        }
+      } else
+      {
+        cardNotry.classList.remove("noshow");
+        cardHelp.classList.add("noshow");
+      }
+
+      checkPhone(phone)
+        ? phoneHelp.classList.add("noshow")
+        : phoneHelp.classList.remove("noshow");
+
+      cardTry++;
+
+      console.log("SUBMIT!");
+    });
+  }
+  formF();
+
+  // form.addEventListener('clea')
+  // part2
+  const queryEl = document.getElementById("query");
+  const answerEl = document.getElementById("answer");
+
+  const line = "avb a1b a2b a3b a4b a5b abb acb";
+  const reg = /a\Db/gm;
+  // console.log(line.match(reg));
+  queryEl.innerText = line;
+  answerEl.innerText = line.match(reg).join(", ");
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<style>
+  .noshow {
+    display: none;
+  }
+</style>
+
+<body>
+  <!-- part1 -->
+  <div id="menu">
+    <div class="item">
+      <div class="name">Меню №1</div>
+      <div class="hidden">
+        <div>Предмет №1</div>
+        <div>Предмет №2</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="name">Меню №2</div>
+      <div class="hidden">
+        <div>Предмет №1</div>
+        <div>Предмет №2</div>
+        <div>Предмет №3</div>
+      </div>
+    </div>
+  </div>
+  <!-- part2 -->
+  <div>
+    <img src="../img/lab2/фото1.jpg" alt="Фото" class="Mimg" />
+    <img src="../img/lab2/фото2.jpg" alt="Фото" class="Mimg noshow" />
+    <img src="../img/lab2/фото3.jpg" alt="Фото" class="Mimg noshow" />
+    <img src="../img/lab2/фото4.jpg" alt="Фото" class="Mimg noshow" />
+  </div>
+</body>
+<script>
+  // const items = Array.from(document.getElementsByClassName("item"));
+  const itemNames = Array.from(document.getElementsByClassName("name"));
+  const itemHiddens = Array.from(document.getElementsByClassName("hidden"));
+  itemNames.forEach((itemName, itemIndex) =>
+  {
+    itemName.addEventListener("click", () =>
+    {
+      const hiddenEl = itemHiddens[itemIndex];
+      hiddenEl.classList.toggle("noshow");
+    });
+  });
+  // part2
+  const imgs = Array.from(document.getElementsByClassName("Mimg"));
+  let index = 0;
+  const interval = setInterval(() =>
+  {
+    imgs[index].classList.toggle("noshow");
+    index = index === 3 ? 0 : index + 1;
+    imgs[index].classList.toggle("noshow");
+  }, 1500);
+</script>
+
+</html>
