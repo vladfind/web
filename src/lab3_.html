@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .noshow {
+      display: none;
+    }
+  </style>
+  <body>
+    <button id="btn">Начать</button>
+    <div>
+      <img src="../img/lab2/фото1.jpg" alt="Фото" class="Mimg noshow" />
+      <img src="../img/lab2/фото2.jpg" alt="Фото" class="Mimg noshow" />
+      <img src="../img/lab2/фото3.jpg" alt="Фото" class="Mimg noshow" />
+      <img src="../img/lab2/фото4.jpg" alt="Фото" class="Mimg noshow" />
+      <img src="../img/lab3/boom.jpg" alt="Фото" id="boom" class="noshow" />
+    </div>
+  </body>
+  <script>
+    /**
+     * @param {Array<Element>} arr
+     * @return {Element}
+     */
+    const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    const getRandomTime = () => Math.random() * 5000;
+
+    const imgs = Array.from(document.getElementsByClassName("Mimg"));
+    const btn = document.getElementById("btn");
+    const boomEl = document.getElementById("boom");
+
+    let interval;
+
+    const main = () => {
+      const imgEl = getRandomItem(imgs);
+      imgEl.classList.remove("noshow");
+
+      const onClick = () => {
+        imgEl.classList.add("noshow");
+
+        boomEl.classList.remove("noshow");
+      };
+      imgEl.addEventListener("click", onClick);
+      setTimeout(() => {
+        boomEl.classList.add("noshow");
+
+        imgEl.removeEventListener("click", onClick);
+        imgEl.classList.add("noshow");
+        setTimeout(main, getRandomTime());
+      }, getRandomTime());
+    };
+    main();
+  </script>
+</html>

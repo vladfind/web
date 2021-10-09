@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <style>
-    .noshow {
-      display: none;
-    }
-  </style>
-  <body>
-    <button id="btn">Начать</button>
-    <div>
-      <img src="../img/lab2/фото1.jpg" alt="Фото" class="Mimg noshow" />
-      <img src="../img/lab2/фото2.jpg" alt="Фото" class="Mimg noshow" />
-      <img src="../img/lab2/фото3.jpg" alt="Фото" class="Mimg noshow" />
-      <img src="../img/lab2/фото4.jpg" alt="Фото" class="Mimg noshow" />
-      <img src="../img/lab3/boom.jpg" alt="Фото" id="boom" class="noshow" />
-    </div>
-  </body>
-  <script>
-    /**
-     * @param {Array<Element>} arr
-     * @return {Element}
-     */
-    const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-    const getRandomTime = () => Math.random() * 5000;
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</head>
 
-    const imgs = Array.from(document.getElementsByClassName("Mimg"));
-    const btn = document.getElementById("btn");
-    const boomEl = document.getElementById("boom");
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+		<div class="container-fluid">
+			<a href="#" class="navbar-brand text-light">Головна</a>
+		</div>
+	</nav>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col border">
+				<ul class="list-group">
+					<a href="lab1.html" class="list-group-item list-group-item-action">Лаб №1</a>
+					<a href="lab2.html" class="list-group-item list-group-item-action">Лаб №2</a>
+					<a href="lab3.html" class="list-group-item list-group-item-action">Лаб №3</a>
+					<a href="lab4.html" class="list-group-item list-group-item-action">Лаб №4</a>
+					<a href="lab5.html" class="list-group-item list-group-item-action">Лаб №5</a>
+					<a href="lab6.html" class="list-group-item list-group-item-action">Лаб №6</a>
+				</ul>
+			</div>
+			<div class="col-10 text-center">
+				<div class="border">
+					<b>Отчёт</b>
+					<p>о лабораторных работах по курсу
+						«Современные технологии Интернет-программирования»
+						студента группы ИПЗ-19-1
+					</p>
+					<p>Гордиенко Владислав Сергеевич</p>
+				</div>
+				<div class="border p-2">
+					<h2>Условие
+						<span class="badge bg-secondary">вариант 6</span>
+					</h2>
+					<p class="border-start border-primary">
+						Тест на скорость реакции. После щелчка по кнопке в тестовом поле случайным образом, через
+						случайные промежутки времени появляются изображения, по которым нужно успеть щелкнуть. Попадание
+						обозначается каким-либо образом (например, «взрывом» изображения). </p>
+					<hr />
+					<h2>Результат</h2>
+					<div class="container-fluid">
+						<iframe src="lab3_.html" height="400px" width="100%">
 
-    let interval;
+						</iframe>
+					</div>
+					<a class="fs-2 link-primary" href="https://github.com/vladfind/web/blob/main/src/lab3.html">Код</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 
-    const main = () => {
-      const imgEl = getRandomItem(imgs);
-      imgEl.classList.remove("noshow");
-
-      const onClick = () => {
-        imgEl.classList.add("noshow");
-
-        boomEl.classList.remove("noshow");
-      };
-      imgEl.addEventListener("click", onClick);
-      setTimeout(() => {
-        boomEl.classList.add("noshow");
-
-        imgEl.removeEventListener("click", onClick);
-        imgEl.classList.add("noshow");
-        setTimeout(main, getRandomTime());
-      }, getRandomTime());
-    };
-    main();
-  </script>
 </html>
