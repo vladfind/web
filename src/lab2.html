@@ -6,16 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </head>
 <style>
   .noshow {
     display: none;
   }
+
+  .move {
+    position: absolute;
+    margin-left: 4rem;
+    margin-top: -1.5rem;
+  }
 </style>
 
 <body>
+  <div class="d-flex">
+    <div class="first">
+      Животные
+      <div class="second">
+        Коты
+        <div class="move">
+          <div>барсик</div>
+          <div>мурсик</div>
+        </div>
+      </div>
+      <div class="second">
+        Собаки
+        <div class="move">
+          <div>шарик</div>
+          <div>барбос</div>
+        </div>
+      </div>
+    </div>
+    <div class="i">№1</div>
+    <div class="i">№2</div>
+
+  </div>
   <!-- part1 -->
-  <div id="menu">
+  <div id="menu" class="noshow">
     <div class="item">
       <div class="name">Меню №1</div>
       <div class="hidden">
@@ -33,7 +66,7 @@
     </div>
   </div>
   <!-- part2 -->
-  <div>
+  <div class="noshow">
     <img src="../img/lab2/фото1.jpg" alt="Фото" class="Mimg" />
     <img src="../img/lab2/фото2.jpg" alt="Фото" class="Mimg noshow" />
     <img src="../img/lab2/фото3.jpg" alt="Фото" class="Mimg noshow" />
@@ -41,6 +74,41 @@
   </div>
 </body>
 <script>
+  const firsts = Array.from(document.getElementsByClassName("first"))
+  const _seconds = Array.from(document.getElementsByClassName("second"))
+  _seconds.forEach(s => s.classList.add("noshow"))
+  const _moves = Array.from(document.getElementsByClassName("move"))
+  _moves.forEach(m => m.classList.add("noshow"))
+  for (const first of firsts)
+  {
+    first.addEventListener("click", (e) =>
+    {
+      if (e.target !== first)
+      {
+        return
+      }
+      const seconds = Array.from(document.getElementsByClassName("second"))
+      for (const second of seconds)
+      {
+        second.classList.toggle("noshow")
+        // const moves = Array.from(document.getElementsByClassName("move"))
+
+      }
+    })
+  }
+  const seconds = Array.from(document.getElementsByClassName("second"))
+  for (const second of seconds)
+  {
+    second.addEventListener("click", () =>
+    {
+      const moves = Array.from(second.getElementsByClassName("move"))
+      for (const move of moves)
+      {
+        move.classList.toggle('noshow')
+      }
+    })
+  }
+
   // const items = Array.from(document.getElementsByClassName("item"));
   const itemNames = Array.from(document.getElementsByClassName("name"));
   const itemHiddens = Array.from(document.getElementsByClassName("hidden"));
