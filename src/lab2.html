@@ -43,8 +43,23 @@
         </div>
       </div>
     </div>
-    <div class="i">№1</div>
-    <div class="i">№2</div>
+    <div class="first">
+      Животные
+      <div class="second">
+        Коты
+        <div class="move">
+          <div>барсик</div>
+          <div>мурсик</div>
+        </div>
+      </div>
+      <div class="second">
+        Собаки
+        <div class="move">
+          <div>шарик</div>
+          <div>барбос</div>
+        </div>
+      </div>
+    </div>
 
   </div>
   <!-- part1 -->
@@ -92,8 +107,19 @@
       {
         second.classList.toggle("noshow")
         // const moves = Array.from(document.getElementsByClassName("move"))
-
       }
+      //remove all others
+      firsts.filter(f => f !== first).forEach(f =>
+      {
+        const secondsOther = Array.from(f.getElementsByClassName("second"))
+        secondsOther.forEach(s =>
+        {
+          s.classList.add('noshow')
+          const moves = Array.from(s.getElementsByClassName("move"))
+          moves.forEach(m => m.classList.add('noshow'))
+        })
+
+      })
     })
   }
   const seconds = Array.from(document.getElementsByClassName("second"))
@@ -106,6 +132,12 @@
       {
         move.classList.toggle('noshow')
       }
+
+      seconds.filter(s => s !== second).forEach(s =>
+      {
+        const moves = Array.from(s.getElementsByClassName("move"))
+        moves.forEach(m => m.classList.add('noshow'))
+      })
     })
   }
 
