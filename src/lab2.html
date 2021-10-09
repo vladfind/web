@@ -2,165 +2,69 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 </head>
-<style>
-  .noshow {
-    display: none;
-  }
-
-  .move {
-    position: absolute;
-    margin-left: 4rem;
-    margin-top: -1.5rem;
-  }
-</style>
 
 <body>
-  <div class="d-flex">
-    <div class="first">
-      Животные
-      <div class="second">
-        Коты
-        <div class="move">
-          <div>барсик</div>
-          <div>мурсик</div>
-        </div>
-      </div>
-      <div class="second">
-        Собаки
-        <div class="move">
-          <div>шарик</div>
-          <div>барбос</div>
-        </div>
-      </div>
-    </div>
-    <div class="first">
-      Животные
-      <div class="second">
-        Коты
-        <div class="move">
-          <div>барсик</div>
-          <div>мурсик</div>
-        </div>
-      </div>
-      <div class="second">
-        Собаки
-        <div class="move">
-          <div>шарик</div>
-          <div>барбос</div>
-        </div>
-      </div>
-    </div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+		<div class="container-fluid">
+			<a href="#" class="navbar-brand text-light">Головна</a>
+		</div>
+	</nav>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col border">
+				<ul class="list-group">
+					<a href="lab1.html" class="list-group-item list-group-item-action">Лаб №1</a>
+					<a href="lab2.html" class="list-group-item list-group-item-action">Лаб №2</a>
+					<a href="lab3.html" class="list-group-item list-group-item-action">Лаб №3</a>
+					<a href="lab4.html" class="list-group-item list-group-item-action">Лаб №4</a>
+					<a href="lab5.html" class="list-group-item list-group-item-action">Лаб №5</a>
+					<a href="lab6.html" class="list-group-item list-group-item-action">Лаб №6</a>
+				</ul>
+			</div>
+			<div class="col-10 text-center">
+				<div class="border">
+					<b>Отчёт</b>
+					<p>о лабораторных работах по курсу
+						«Современные технологии Интернет-программирования»
+						студента группы ИПЗ-19-1
+					</p>
+					<p>Гордиенко Владислав Сергеевич</p>
+				</div>
+				<div class="border p-2">
+					<h2>Условие
+						<span class="badge bg-secondary">вариант 6</span>
+					</h2>
+					<p class="border-start border-primary">
+						Вертикальное двухуровневое меню, раскрывающееся при щелчке левой кнопкой мыши. Второй уровень
+						меню скрывается при повторном щелчке по выбранному пункту.
+					</p>
+					<p class="border-start border-primary">
+						Организуйте последовательный просмотр изображений (не меньше четырех). Смена изображений должна
+						осуществляться через некоторые равные промежутки времени.
+					</p>
+					<hr />
+					<h2>Результат</h2>
+					<div class="container-fluid">
+						<iframe src="lab2_.html" height="400px" width="100%">
 
-  </div>
-  <!-- part1 -->
-  <div id="menu" class="noshow">
-    <div class="item">
-      <div class="name">Меню №1</div>
-      <div class="hidden">
-        <div>Предмет №1</div>
-        <div>Предмет №2</div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="name">Меню №2</div>
-      <div class="hidden">
-        <div>Предмет №1</div>
-        <div>Предмет №2</div>
-        <div>Предмет №3</div>
-      </div>
-    </div>
-  </div>
-  <!-- part2 -->
-  <div class="noshow">
-    <img src="../img/lab2/фото1.jpg" alt="Фото" class="Mimg" />
-    <img src="../img/lab2/фото2.jpg" alt="Фото" class="Mimg noshow" />
-    <img src="../img/lab2/фото3.jpg" alt="Фото" class="Mimg noshow" />
-    <img src="../img/lab2/фото4.jpg" alt="Фото" class="Mimg noshow" />
-  </div>
+						</iframe>
+					</div>
+
+					<a class="fs-2 link-primary" href="https://github.com/vladfind/web/blob/main/src/lab1.html">Код</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-<script>
-  const firsts = Array.from(document.getElementsByClassName("first"))
-  const _seconds = Array.from(document.getElementsByClassName("second"))
-  _seconds.forEach(s => s.classList.add("noshow"))
-  const _moves = Array.from(document.getElementsByClassName("move"))
-  _moves.forEach(m => m.classList.add("noshow"))
-  for (const first of firsts)
-  {
-    first.addEventListener("click", (e) =>
-    {
-      if (e.target !== first)
-      {
-        return
-      }
-      const seconds = Array.from(document.getElementsByClassName("second"))
-      for (const second of seconds)
-      {
-        second.classList.toggle("noshow")
-        // const moves = Array.from(document.getElementsByClassName("move"))
-      }
-      //remove all others
-      firsts.filter(f => f !== first).forEach(f =>
-      {
-        const secondsOther = Array.from(f.getElementsByClassName("second"))
-        secondsOther.forEach(s =>
-        {
-          s.classList.add('noshow')
-          const moves = Array.from(s.getElementsByClassName("move"))
-          moves.forEach(m => m.classList.add('noshow'))
-        })
-
-      })
-    })
-  }
-  const seconds = Array.from(document.getElementsByClassName("second"))
-  for (const second of seconds)
-  {
-    second.addEventListener("click", () =>
-    {
-      const moves = Array.from(second.getElementsByClassName("move"))
-      for (const move of moves)
-      {
-        move.classList.toggle('noshow')
-      }
-
-      seconds.filter(s => s !== second).forEach(s =>
-      {
-        const moves = Array.from(s.getElementsByClassName("move"))
-        moves.forEach(m => m.classList.add('noshow'))
-      })
-    })
-  }
-
-  // const items = Array.from(document.getElementsByClassName("item"));
-  const itemNames = Array.from(document.getElementsByClassName("name"));
-  const itemHiddens = Array.from(document.getElementsByClassName("hidden"));
-  itemNames.forEach((itemName, itemIndex) =>
-  {
-    itemName.addEventListener("click", () =>
-    {
-      const hiddenEl = itemHiddens[itemIndex];
-      hiddenEl.classList.toggle("noshow");
-    });
-  });
-  // part2
-  const imgs = Array.from(document.getElementsByClassName("Mimg"));
-  let index = 0;
-  const interval = setInterval(() =>
-  {
-    imgs[index].classList.toggle("noshow");
-    index = index === 3 ? 0 : index + 1;
-    imgs[index].classList.toggle("noshow");
-  }, 1500);
-</script>
 
 </html>
