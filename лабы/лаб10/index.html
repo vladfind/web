@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		td {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		const OLD = new ActiveXObject("Microsoft.XMLDOM")
+		OLD.async = "false"
+		OLD.load("lab7.xml")
+		alert(OLD.text)
+		//new stuff
+		const ACTIVE = new ActiveXObject("Microsoft.XMLDOM")
+		ACTIVE.async = "false"
+		ACTIVE.load("msg.xml")
+
+		// table stuff
+		const cols = ACTIVE.getElementsByTagName("col")
+		document.writeln("<table>")
+		document.writeln("<tr>")
+		for (let i = 0; i < cols.length; i++)
+		{
+			const text = cols[i].text
+			document.writeln("<td>" + text + "</td>")
+		}
+		document.writeln("<tr>")
+		document.writeln("</table>")
+		// change stuff
+		const numbers = ACTIVE.getElementsByTagName("number")
+
+		function getText(n)
+		{
+			switch (n)
+			{
+				case '0':
+					return "ноль"
+				case '1':
+					return "один"
+				case '2':
+					return "два"
+				case '3':
+					return "три"
+				case '4':
+					return "четыре"
+				default:
+					return ""
+			}
+		}
+		document.write("Числа: ")
+		for (let i = 0; i < numbers.length; i++)
+		{
+			const text = getText(numbers[i].text)
+			document.write(text + ", ")
+		}
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ROUTES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ROUTE" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="DESTINATION" />
+							<xs:element name="STOPS">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="STOP" maxOccurs="unbounded" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="DATE" />
+							<xs:element name="TIMES">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="TIME" maxOccurs="unbounded" minOccurs="1" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="PRICE" />
+							<xs:element type="xs:string" name="SEATS" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
